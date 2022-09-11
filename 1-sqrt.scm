@@ -1,20 +1,4 @@
-(define (square x)
-  (* x x))
-
-(define (abs x)
-  (if (< x 0)
-      (- x)
-      x))
-
-(assert (= (abs -2)
-           2))
-
-(define (average x y)
-  (/ (+ x y) 2))
-
-(assert (= (average 4 6)
-           5))
-
+(load "common.scm")
 (define (sqrt x) 
     (define (improve guess x)
             (average guess (/ x guess)))
