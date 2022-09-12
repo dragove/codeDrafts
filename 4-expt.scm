@@ -1,6 +1,6 @@
 (load "common.scm")
 
-;; slow and memory cusumption version
+;; slow and memory consumption version
 (define (expt a n)
   (if (= n 1)
     a
