@@ -4,7 +4,7 @@
 (define (expt a n)
   (if (= n 1)
     a
-    (* a (expt a (- n 1)))))
+    (* a (expt a (1- n)))))
 
 (display (expt 2 4))
 (newline)
@@ -14,7 +14,7 @@
   (define (expt-iter a n product)
     (if (= n 0)
       product
-      (expt-iter a (- n 1) (* a product))))
+      (expt-iter a (1- n) (* a product))))
   (expt-iter a n 1))
     
 (display (expt 2 4))
@@ -29,9 +29,8 @@
     a
    (if (even? n)
      (square (expt a (/ n 2)))
-     (* a (expt a (- n 1))))))
+     (* a (expt a (1- n))))))
 
 (display (expt 2 4))
 (newline)
-
 
