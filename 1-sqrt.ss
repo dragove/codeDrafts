@@ -1,5 +1,7 @@
-(load "common.scm")
-(define (sqrt x) 
+#lang scheme
+
+(require "common.ss")
+(define (sqrt x)
     (define (improve guess x)
             (average guess (/ x guess)))
 

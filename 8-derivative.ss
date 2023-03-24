@@ -1,3 +1,5 @@
+#lang scheme
+
 ;; f(x) = x^3 -> f'(x) = 3*x^2
 (define (f x) (* x x x))
 

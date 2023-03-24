@@ -1,3 +1,5 @@
+#lang scheme
+
 (define (square x)
   (* x x))
 
@@ -15,3 +17,9 @@
   (if (= b 0)
     a
     (gcd b (remainder a b))))
+
+(provide nil)
+(provide abs)
+(provide gcd)
+(provide square)
+(provide average)

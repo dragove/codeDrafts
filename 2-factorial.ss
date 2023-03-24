@@ -1,3 +1,5 @@
+#lang scheme
+
 ;; normal version without optimization
 ;; uses more memory
 (define (fact n)
@@ -10,12 +12,12 @@
     
 ;; iterable version with tail recursion
 ;; uses less memory than above version
-(define (fact n)
+(define (fact-fast n)
     (define (fact-iter n res)
       (if (= n 1)
         res
         (fact-iter (- n 1) (* res n))))
     (fact-iter n 1))
 
-(display (fact 4))
+(display (fact-fast 4))
 (newline)
