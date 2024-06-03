@@ -1,5 +1,4 @@
-# scheme code learning for dragove
+# Dragove's Code Drafts
 
-## Introduction
+This repository stores some drafts or learning code by dragove
 
-code is compatible with racket only
