@@ -2,7 +2,7 @@
 .DS_Store
 
 # scala-cli
-.scala-build/*
+.scala-build
 
 # sbt specific
 dist/*
