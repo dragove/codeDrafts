@@ -15,28 +15,22 @@ val directions = (for
   j <- -1 to 1
 yield (i, j)).filter(_ != (0, 0))
 
-def checkBound(mat: Array[Array[Char]], x: Int, y: Int) =
-  x >= 0 && y >= 0 && x < mat.length && y < mat(x).length
+def checkBound(x: Int, y: Int) =
+  x >= 0 && y >= 0 && x < data.length && y < data(x).length
 
-def matchDir(
-    mat: Array[Array[Char]],
-    x: Int,
-    y: Int,
-    dir: (Int, Int)
-): Boolean =
+def matchDir(x: Int, y: Int, dir: (Int, Int)): Boolean =
   (0 until 4).forall(i =>
     val nx = x + dir(0) * i
     val ny = y + dir(1) * i
-    checkBound(mat, nx, ny) && mat(nx)(ny) == pattern(i)
+    checkBound(nx, ny) && data(nx)(ny) == pattern(i)
   )
 
-def search(mat: Array[Array[Char]], x: Int, y: Int): Int =
-  directions.count(dir => matchDir(mat, x, y, dir))
+def search(x: Int, y: Int): Int = directions.count(dir => matchDir(x, y, dir))
 
 val allCount = (for
   x <- 0 until data.length
   y <- 0 until data(x).length
-yield search(data, x, y)).sum pipe println
+yield search(x, y)).sum pipe println
 
 // Part 2
 ((for
