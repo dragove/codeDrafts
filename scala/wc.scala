@@ -26,7 +26,7 @@ private def countWords(s: String) =
   val flags = (for
     arg <- args
     if arg(0) == '-' && arg.length() > 1
-  yield arg.drop(0)).toSet
+  yield arg.drop(1)).toSet
   val (c, l, w, m) = (flags("c"), flags("l"), flags("w"), flags("m"))
   val fileName = args.find(_(0) != '-')
 
