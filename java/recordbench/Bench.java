@@ -1,4 +1,4 @@
-//> using jvm 21
+//> using jvm zulu:21
 //> using jmh true
 package recordbench;
 
@@ -16,9 +16,9 @@ import org.openjdk.jmh.annotations.*;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
-@Warmup(iterations = 5, time = 1)
-@Measurement(iterations = 5, time = 1)
-@Fork(value = 3)
+@Warmup(iterations = 4, time = 2)
+@Measurement(iterations = 8, time = 2)
+@Fork(value = 1)
 public class Bench {
 
 	private static final RegularPoint REGULAR_ORIGIN = new RegularPoint(0, 0);
