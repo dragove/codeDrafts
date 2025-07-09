@@ -1,5 +1,8 @@
-//> using jvm 21
-//> using scala 3.6.4
+//> using jvm 24
+//> using scala 3.7.1
+//> using dep com.lihaoyi::os-lib:0.11.4
+//> using dep com.lihaoyi::mainargs:0.7.6
+
 import java.nio.file.*
 import scala.jdk.CollectionConverters.*
 import scala.io.Source
