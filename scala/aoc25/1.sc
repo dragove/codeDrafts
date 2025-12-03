@@ -3,32 +3,30 @@ import scala.io.Source
 val runs = Source
   .fromFile("./1.txt")
   .getLines()
-  .map(it => (it(0), it.drop(1).toInt))
+  .map(it => (if it(0) == 'L' then -1 else 1, it.drop(1).toInt))
   .toArray
 
 // 1-1 count point to 0
-var current = 50
-val count = runs
-  .map { (op, num) =>
-    if op == 'L' then current = current - num
-    else current = current + num
-    current % 100 == 0
-  }
-  .count(identity)
+val res1 = runs.foldLeft((50, 0)) { case ((current, count), (dir, num)) =>
+  // in this case, we can simpliy ignore the real number
+  // we just need the number be multiple of 100
+  val newNum = current + num * dir
+  val newCount = if newNum % 100 == 0 then count + 1 else count
+  (newNum, newCount)
+}
 
-println(count)
+println(res1(1))
 
 // 1-2 count point to 0 or pass 0
-current = 50
-val count2 = runs.map { (op, num) =>
-  val previous = current
-  var passes = num / 100
+val res2 = runs.foldLeft((50, 0)) { case ((current, count), (dir, num)) =>
   val remain = num % 100
-  if op == 'L' then current = current - remain
-  else current = current + remain
-  if previous != 0 && remain > 0 && (current <= 0 || current >= 100) then passes = passes + 1
-  if current < 0 then current = current + 100
-  if current >= 100 then current = current - 100
-  passes
-}.sum
-println(count2)
+  val rawNewNum = current + remain * dir
+  var passes = num / 100
+  if current != 0 && remain > 0 && (rawNewNum <= 0 || rawNewNum >= 100) then passes = passes + 1
+  val newNum =
+    if rawNewNum < 0 then rawNewNum + 100
+    else if rawNewNum >= 100 then rawNewNum - 100
+    else rawNewNum
+  (newNum, count + passes)
+}
+println(res2(1))
